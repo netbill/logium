@@ -4,8 +4,8 @@ import (
 	"errors"
 	"strings"
 
+	"github.com/netbill/ape"
 	"github.com/sirupsen/logrus"
-	"github.com/umisto/ape"
 )
 
 func NewLogger(level, format string) *logrus.Logger {
