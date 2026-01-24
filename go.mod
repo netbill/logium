@@ -3,7 +3,7 @@ module github.com/netbill/logium
 go 1.24.5
 
 require (
-	github.com/netbill/rstkit/ape v0.1.7
+	github.com/netbill/ape v0.1.1
 	github.com/sirupsen/logrus v1.9.3
 )
 
