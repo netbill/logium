@@ -19,6 +19,12 @@ func New() *Logger {
 	return &Logger{Logger: logrus.New()}
 }
 
+func NewEntry(logger *Logger) *Entry {
+	return &Entry{
+		Entry: logrus.NewEntry(logger.Logger),
+	}
+}
+
 func NewWithBase(base *logrus.Logger) *Logger {
 	return &Logger{Logger: base}
 }
