@@ -54,12 +54,12 @@ func AddHook(hook logrus.Hook) {
 }
 
 // WithError creates an entry from the standard logger and adds an error to it, using the value defined in ErrorKey as key.
-func WithError(err error) *logrus.Entry {
-	return std.WithField(logrus.ErrorKey, err)
+func WithError(err error) *Entry {
+	return std.WithError(err)
 }
 
 // WithContext creates an entry from the standard logger and adds a context to it.
-func WithContext(ctx context.Context) *logrus.Entry {
+func WithContext(ctx context.Context) *Entry {
 	return std.WithContext(ctx)
 }
 
@@ -68,7 +68,7 @@ func WithContext(ctx context.Context) *logrus.Entry {
 //
 // Note that it doesn't log until you call Debug, Print, Info, Warn, Fatal
 // or Panic on the Entry it returns.
-func WithField(key string, value interface{}) *logrus.Entry {
+func WithField(key string, value interface{}) *Entry {
 	return std.WithField(key, value)
 }
 
@@ -78,7 +78,7 @@ func WithField(key string, value interface{}) *logrus.Entry {
 //
 // Note that it doesn't log until you call Debug, Print, Info, Warn, Fatal
 // or Panic on the Entry it returns.
-func WithFields(fields logrus.Fields) *logrus.Entry {
+func WithFields(fields logrus.Fields) *Entry {
 	return std.WithFields(fields)
 }
 
@@ -87,7 +87,7 @@ func WithFields(fields logrus.Fields) *logrus.Entry {
 //
 // Note that it doesn't log until you call Debug, Print, Info, Warn, Fatal
 // or Panic on the Entry it returns.
-func WithTime(t time.Time) *logrus.Entry {
+func WithTime(t time.Time) *Entry {
 	return std.WithTime(t)
 }
 
