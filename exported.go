@@ -79,7 +79,7 @@ func WithField(key string, value interface{}) *Entry {
 // Note that it doesn't log until you call Debug, Print, Info, Warn, Fatal
 // or Panic on the Entry it returns.
 func WithFields(fields logrus.Fields) *Entry {
-	return std.WithFields(fields)
+	return std.WithFields(Fields(fields))
 }
 
 // WithTime creates an entry from the standard logger and overrides the time of
