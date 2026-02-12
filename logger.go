@@ -63,17 +63,17 @@ func (l *Logger) WithAccount(auth AccountAuth) *Entry {
 }
 
 type uploadSessionContent interface {
-	GetUploadOwnerAccountID() uuid.UUID
-	GetUploadSessionID() uuid.UUID
-	GetUploadResourceID() string
-	GetUploadResource() string
+	GetOwnerAccountID() uuid.UUID
+	GetSessionID() uuid.UUID
+	GetResourceID() string
+	GetResource() string
 }
 
 func (l *Logger) WithUploadSession(tokens uploadSessionContent) *Entry {
 	return l.WithFields(Fields{
-		UploadOwnerAccountIdField: tokens.GetUploadOwnerAccountID(),
-		UploadSessionIdField:      tokens.GetUploadSessionID(),
-		UploadResourceTypeField:   tokens.GetUploadResourceID(),
-		UploadResourceIdField:     tokens.GetUploadResource(),
+		UploadOwnerAccountIdField: tokens.GetOwnerAccountID(),
+		UploadSessionIdField:      tokens.GetSessionID(),
+		UploadResourceTypeField:   tokens.GetResourceID(),
+		UploadResourceIdField:     tokens.GetResource(),
 	})
 }

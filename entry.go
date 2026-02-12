@@ -58,9 +58,9 @@ func (e *Entry) WithAccount(auth AccountAuth) *Entry {
 
 func (e *Entry) WithUploadSession(tokens uploadSessionContent) *Entry {
 	return e.WithFields(Fields{
-		UploadOwnerAccountIdField: tokens.GetUploadOwnerAccountID(),
-		UploadSessionIdField:      tokens.GetUploadSessionID(),
-		UploadResourceTypeField:   tokens.GetUploadResourceID(),
-		UploadResourceIdField:     tokens.GetUploadResource(),
+		UploadOwnerAccountIdField: tokens.GetOwnerAccountID(),
+		UploadSessionIdField:      tokens.GetSessionID(),
+		UploadResourceTypeField:   tokens.GetResourceID(),
+		UploadResourceIdField:     tokens.GetResource(),
 	})
 }
