@@ -5,7 +5,6 @@ import (
 	"io"
 	"time"
 
-	"github.com/google/uuid"
 	"github.com/sirupsen/logrus"
 )
 
@@ -227,6 +226,9 @@ func Fatalln(args ...interface{}) {
 	std.Fatalln(args...)
 }
 
-func WithInitiator(initiatorID uuid.UUID) *Entry {
-	return std.WithInitiator(initiatorID)
+func WithAccount(auth AccountAuth) *Entry {
+	return std.WithFields(Fields{
+		AccountIDField:        auth.GetAccountID(),
+		AccountSessionIDField: auth.GetSessionID(),
+	})
 }
