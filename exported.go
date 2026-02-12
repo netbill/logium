@@ -5,6 +5,7 @@ import (
 	"io"
 	"time"
 
+	"github.com/google/uuid"
 	"github.com/sirupsen/logrus"
 )
 
@@ -224,4 +225,8 @@ func Panicln(args ...interface{}) {
 // Fatalln logs a message at level Fatal on the standard logger then the process will exit with status set to 1.
 func Fatalln(args ...interface{}) {
 	std.Fatalln(args...)
+}
+
+func WithInitiator(initiatorID uuid.UUID) *Entry {
+	return std.WithInitiator(initiatorID)
 }

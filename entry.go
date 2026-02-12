@@ -3,6 +3,7 @@ package logium
 import (
 	"context"
 	"errors"
+	"net/http"
 	"time"
 
 	"github.com/netbill/ape"
@@ -14,33 +15,23 @@ type Entry struct {
 }
 
 func NewEntry(logger *Logger) *Entry {
-	return &Entry{
-		Entry: logrus.NewEntry(logger.Logger),
-	}
+	return &Entry{Entry: logrus.NewEntry(logger.Logger)}
 }
 
 func (e *Entry) WithField(key string, value any) *Entry {
-	return &Entry{
-		Entry: e.Entry.WithField(key, value),
-	}
+	return &Entry{Entry: e.Entry.WithField(key, value)}
 }
 
 func (e *Entry) WithFields(fields Fields) *Entry {
-	return &Entry{
-		Entry: e.Entry.WithFields(logrus.Fields(fields)),
-	}
+	return &Entry{Entry: e.Entry.WithFields(logrus.Fields(fields))}
 }
 
 func (e *Entry) WithContext(ctx context.Context) *Entry {
-	return &Entry{
-		Entry: e.Entry.WithContext(ctx),
-	}
+	return &Entry{Entry: e.Entry.WithContext(ctx)}
 }
 
 func (e *Entry) WithTime(t time.Time) *Entry {
-	return &Entry{
-		Entry: e.Entry.WithTime(t),
-	}
+	return &Entry{Entry: e.Entry.WithTime(t)}
 }
 
 func (e *Entry) WithError(err error) *Entry {
@@ -49,4 +40,27 @@ func (e *Entry) WithError(err error) *Entry {
 		return &Entry{Entry: e.Entry.WithError(ae)}
 	}
 	return &Entry{Entry: e.Entry.WithError(err)}
+}
+
+func (e *Entry) WithRequest(r *http.Request) *Entry {
+	return e.WithFields(Fields{
+		HTTPMethodField: r.Method,
+		HTTPPathField:   r.URL.Path,
+	})
+}
+
+func (e *Entry) WithAccount(auth AccountAuth) *Entry {
+	return e.WithFields(Fields{
+		AccountIDField:        auth.GetAccountID(),
+		AccountSessionIDField: auth.GetSessionID(),
+	})
+}
+
+func (e *Entry) WithUploadSession(tokens uploadSessionContent) *Entry {
+	return e.WithFields(Fields{
+		UploadOwnerAccountIdField: tokens.GetUploadOwnerAccountID(),
+		UploadSessionIdField:      tokens.GetUploadSessionID(),
+		UploadResourceTypeField:   tokens.GetUploadResourceID(),
+		UploadResourceIdField:     tokens.GetUploadResource(),
+	})
 }
