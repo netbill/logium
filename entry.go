@@ -49,18 +49,18 @@ func (e *Entry) WithRequest(r *http.Request) *Entry {
 	})
 }
 
-func (e *Entry) WithAccount(auth AccountAuth) *Entry {
+func (e *Entry) WithAccountAuthClaims(auth accountAuthClaims) *Entry {
 	return e.WithFields(Fields{
 		AccountIDField:        auth.GetAccountID(),
 		AccountSessionIDField: auth.GetSessionID(),
 	})
 }
 
-func (e *Entry) WithUploadSession(tokens uploadSessionContent) *Entry {
+func (e *Entry) WithUploadContentClaims(tokens uploadContentClaims) *Entry {
 	return e.WithFields(Fields{
-		UploadOwnerAccountIdField: tokens.GetUploadOwnerAccountID(),
-		UploadSessionIdField:      tokens.GetUploadSessionID(),
-		UploadResourceTypeField:   tokens.GetUploadResourceID(),
-		UploadResourceIdField:     tokens.GetUploadResource(),
+		UploadAccountIdField:    tokens.GetAccountID(),
+		UploadSessionIdField:    tokens.GetSessionID(),
+		UploadResourceTypeField: tokens.GetResourceID(),
+		UploadResourceIdField:   tokens.GetResource(),
 	})
 }

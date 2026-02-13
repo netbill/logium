@@ -226,9 +226,18 @@ func Fatalln(args ...interface{}) {
 	std.Fatalln(args...)
 }
 
-func WithAccount(auth AccountAuth) *Entry {
+func WithAccountAuthClaims(auth accountAuthClaims) *Entry {
 	return std.WithFields(Fields{
 		AccountIDField:        auth.GetAccountID(),
 		AccountSessionIDField: auth.GetSessionID(),
+	})
+}
+
+func WithUploadContentClaims(tokens uploadContentClaims) *Entry {
+	return std.WithFields(Fields{
+		UploadAccountIdField:    tokens.GetAccountID(),
+		UploadSessionIdField:    tokens.GetSessionID(),
+		UploadResourceIdField:   tokens.GetResourceID(),
+		UploadResourceTypeField: tokens.GetResource(),
 	})
 }

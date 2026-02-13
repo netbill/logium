@@ -9,8 +9,8 @@ const (
 	HTTPMethodField = "http_method"
 	HTTPPathField   = "http_path"
 
-	UploadOwnerAccountIdField = "upload_owner_account_id"
-	UploadSessionIdField      = "upload_session_id"
-	UploadResourceTypeField   = "upload_resource"
-	UploadResourceIdField     = "upload_resource_id"
+	UploadAccountIdField    = "upload_account_id"
+	UploadSessionIdField    = "upload_session_id"
+	UploadResourceTypeField = "upload_resource"
+	UploadResourceIdField   = "upload_resource_id"
 )
