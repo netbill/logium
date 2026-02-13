@@ -13,4 +13,8 @@ const (
 	UploadSessionIdField    = "upload_session_id"
 	UploadResourceTypeField = "upload_resource"
 	UploadResourceIdField   = "upload_resource_id"
+
+	OperationField = "operation"
+	ServiceField   = "service"
+	ComponentField = "component"
 )

@@ -77,3 +77,15 @@ func (l *Logger) WithUploadContentClaims(tokens uploadContentClaims) *Entry {
 		UploadResourceIdField:   tokens.GetResource(),
 	})
 }
+
+func (l *Logger) WithOperation(operation string) *Entry {
+	return l.WithField(OperationField, operation)
+}
+
+func (l *Logger) WithService(service string) *Entry {
+	return l.WithField(ServiceField, service)
+}
+
+func (l *Logger) WithComponent(component string) *Entry {
+	return l.WithField(ComponentField, component)
+}

@@ -64,3 +64,15 @@ func (e *Entry) WithUploadContentClaims(tokens uploadContentClaims) *Entry {
 		UploadResourceIdField:   tokens.GetResource(),
 	})
 }
+
+func (e *Entry) WithOperation(operation string) *Entry {
+	return e.WithField(OperationField, operation)
+}
+
+func (e *Entry) WithService(service string) *Entry {
+	return e.WithField(ServiceField, service)
+}
+
+func (e *Entry) WithComponent(component string) *Entry {
+	return e.WithField(ComponentField, component)
+}

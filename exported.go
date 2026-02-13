@@ -241,3 +241,15 @@ func WithUploadContentClaims(tokens uploadContentClaims) *Entry {
 		UploadResourceTypeField: tokens.GetResource(),
 	})
 }
+
+func WithOperation(operation string) *Entry {
+	return std.WithField(OperationField, operation)
+}
+
+func WithService(service string) *Entry {
+	return std.WithField(ServiceField, service)
+}
+
+func WithComponent(component string) *Entry {
+	return std.WithField(ComponentField, component)
+}
