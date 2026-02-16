@@ -62,22 +62,6 @@ func (l *Logger) WithAccountAuthClaims(auth accountAuthClaims) *Entry {
 	})
 }
 
-type uploadContentClaims interface {
-	GetAccountID() uuid.UUID
-	GetSessionID() uuid.UUID
-	GetResourceID() string
-	GetResource() string
-}
-
-func (l *Logger) WithUploadContentClaims(tokens uploadContentClaims) *Entry {
-	return l.WithFields(Fields{
-		UploadAccountIdField:    tokens.GetAccountID(),
-		UploadSessionIdField:    tokens.GetSessionID(),
-		UploadResourceTypeField: tokens.GetResourceID(),
-		UploadResourceIdField:   tokens.GetResource(),
-	})
-}
-
 func (l *Logger) WithOperation(operation string) *Entry {
 	return l.WithField(OperationField, operation)
 }

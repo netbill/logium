@@ -233,15 +233,6 @@ func WithAccountAuthClaims(auth accountAuthClaims) *Entry {
 	})
 }
 
-func WithUploadContentClaims(tokens uploadContentClaims) *Entry {
-	return std.WithFields(Fields{
-		UploadAccountIdField:    tokens.GetAccountID(),
-		UploadSessionIdField:    tokens.GetSessionID(),
-		UploadResourceIdField:   tokens.GetResourceID(),
-		UploadResourceTypeField: tokens.GetResource(),
-	})
-}
-
 func WithOperation(operation string) *Entry {
 	return std.WithField(OperationField, operation)
 }

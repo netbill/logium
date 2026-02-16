@@ -56,15 +56,6 @@ func (e *Entry) WithAccountAuthClaims(auth accountAuthClaims) *Entry {
 	})
 }
 
-func (e *Entry) WithUploadContentClaims(tokens uploadContentClaims) *Entry {
-	return e.WithFields(Fields{
-		UploadAccountIdField:    tokens.GetAccountID(),
-		UploadSessionIdField:    tokens.GetSessionID(),
-		UploadResourceTypeField: tokens.GetResourceID(),
-		UploadResourceIdField:   tokens.GetResource(),
-	})
-}
-
 func (e *Entry) WithOperation(operation string) *Entry {
 	return e.WithField(OperationField, operation)
 }
