@@ -2,7 +2,6 @@ package logium
 
 import (
 	"context"
-	"net/http"
 )
 
 type Logger interface {
@@ -10,7 +9,6 @@ type Logger interface {
 	WithField(key string, value any) Logger
 	WithFields(fields map[string]any) Logger
 	WithError(err error) Logger
-	WithRequest(r *http.Request) Logger
 	WithOperation(operation string) Logger
 	WithComponent(component string) Logger
 
